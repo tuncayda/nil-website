@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support — Nil</title>
+  <meta name="description" content="Need help with Nil? Browse common questions or reach out directly. We're here to help." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #0a0d0f;
+      --bg-card: #111418;
+      --bg-subtle: #151a1f;
+      --border: rgba(255,255,255,0.07);
+      --gold: #c9a96e;
+      --gold-light: #e2c898;
+      --gold-dim: rgba(201,169,110,0.15);
+      --text: #f0ece4;
+      --text-muted: rgba(240,236,228,0.5);
+      --text-dim: rgba(240,236,228,0.3);
+      --radius: 20px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      background: linear-gradient(to bottom, rgba(10,13,15,0.95), transparent);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .nav-logo svg { height: 28px; width: auto; }
+
+    .nav-cta {
+      background: var(--gold);
+      color: #0a0d0f;
+      padding: 8px 20px;
+      border-radius: 100px;
+      font-weight: 500;
+      font-size: 0.875rem;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-cta:hover { opacity: 0.88; color: #0a0d0f; }
+
+    /* ─── PAGE HEADER ─────────────────────────────── */
+    .page-header {
+      padding: 160px 24px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -60%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(201,169,110,0.05) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .page-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      max-width: 600px;
+      margin: 0 auto 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 440px;
+      margin: 0 auto;
+      font-weight: 300;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── CONTACT CARD ────────────────────────────── */
+    .contact-section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .contact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(201,169,110,0.06) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .contact-card-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .contact-card-text p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      font-weight: 300;
+      line-height: 1.7;
+      max-width: 340px;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gold);
+      color: #0a0d0f;
+      padding: 12px 28px;
+      border-radius: 100px;
+      font-weight: 500;
+      font-size: 0.875rem;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .contact-btn:hover { opacity: 0.88; }
+
+    .contact-btn svg {
+      width: 15px; height: 15px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ─── FAQ ─────────────────────────────────────── */
+    .faq-section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px 120px;
+    }
+
+    .faq-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 40px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 28px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .faq-question span {
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .faq-icon {
+      width: 20px; height: 20px;
+      flex-shrink: 0;
+      position: relative;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .faq-icon::before,
+    .faq-icon::after {
+      content: '';
+      position: absolute;
+      background: var(--text-muted);
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .faq-icon::before { width: 8px; height: 1.5px; }
+    .faq-icon::after  { width: 1.5px; height: 8px; }
+
+    .faq-item.open .faq-icon {
+      border-color: var(--gold);
+      background: var(--gold-dim);
+    }
+
+    .faq-item.open .faq-icon::before { background: var(--gold); }
+    .faq-item.open .faq-icon::after  { background: var(--gold); transform: rotate(90deg); opacity: 0; }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+
+    .faq-answer p {
+      font-size: 0.875rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.8;
+      padding-bottom: 28px;
+    }
+
+    .faq-answer a {
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(201,169,110,0.3);
+      transition: border-color 0.2s;
+    }
+
+    .faq-answer a:hover { border-color: var(--gold); }
+
+    /* ─── FOOTER ──────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .footer-logo svg { height: 22px; width: auto; }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--text-muted); }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+
+    /* ─── ANIMATIONS ──────────────────────────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+
+      .nav-cta {
+        font-size: 0.7rem;
+        padding: 6px 12px;
+      }
+
+      .page-header { padding: 120px 20px 60px; }
+
+      .contact-section,
+      .faq-section { padding-left: 20px; padding-right: 20px; }
+
+      .contact-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 32px 28px;
+        gap: 28px;
+      }
+
+      .contact-btn { width: 100%; justify-content: center; }
+
+      footer {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+        padding: 32px 20px;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <svg viewBox="100 150 300 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 141 345 L 141 265 A 35 35 0 0 1 211 265 L 211 345" stroke="#FFFFFF" stroke-width="44" fill="none" stroke-linecap="butt"/>
+        <path d="M 285 323 L 285 230" stroke="#FFFFFF" stroke-width="44" fill="none" stroke-linecap="round"/>
+        <circle cx="285" cy="171" r="22" fill="#FFFFFF"/>
+        <path d="M 359 323 L 359 171" stroke="#FFFFFF" stroke-width="44" fill="none" stroke-linecap="round"/>
+      </svg>
+    </a>
+    <a href="#" class="nav-cta">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      Download on App Store
+    </a>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <p class="page-label fade-in">Support</p>
+    <h1 class="fade-in">How can we help?</h1>
+    <p class="page-subtitle fade-in">Browse the common questions below or reach out directly — we'll get back to you as soon as possible.</p>
+  </div>
+
+  <!-- CONTACT CARD -->
+  <div class="contact-section">
+    <div class="contact-card fade-in">
+      <div class="contact-card-text">
+        <h2>Get in touch</h2>
+        <p>Have a question, found a bug, or want to share feedback? Send us an email and we'll respond personally.</p>
+      </div>
+      <a href="mailto:feedback@nildhikr.com" class="contact-btn">
+        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+        feedback@nildhikr.com
+      </a>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <p class="faq-label fade-in">Common questions</p>
+
+    <div class="faq-item fade-in">
+      <button class="faq-question" aria-expanded="false">
+        <span>How does voice counting work?</span>
+        <div class="faq-icon"></div>
+      </button>
+      <div class="faq-answer">
+        <p>Nil uses your device's microphone to detect the sound of your voice in real time. Every time you say a dhikr, the counter increments automatically — no tapping needed. All audio processing happens entirely on your device and is never stored or sent anywhere.</p>
+      </div>
+    </div>
+
+    <div class="faq-item fade-in">
+      <button class="faq-question" aria-expanded="false">
+        <span>Does Nil work without an internet connection?</span>
+        <div class="faq-icon"></div>
+      </button>
+      <div class="faq-answer">
+        <p>Yes, fully. Nil is entirely offline. All features — voice counting, tap counting, progress tracking, widgets, and Apple Watch — work without any internet connection. Your data lives only on your device.</p>
+      </div>
+    </div>
+
+    <div class="faq-item fade-in">
+      <button class="faq-question" aria-expanded="false">
+        <span>What is the difference between the free and premium version?</span>
+        <div class="faq-icon"></div>
+      </button>
+      <div class="faq-answer">
+        <p>The free version gives you unlimited dhikr types, voice and tap counting, and progress tracking. The premium version is a one-time purchase that unlocks Apple Watch support, home screen and lock screen widgets, and additional customisation options.</p>
+      </div>
+    </div>
+
+    <div class="faq-item fade-in">
+      <button class="faq-question" aria-expanded="false">
+        <span>How do I set up the Lock Screen or Home Screen widget?</span>
+        <div class="faq-icon"></div>
+      </button>
+      <div class="faq-answer">
+        <p>Long-press your iPhone's Lock Screen or Home Screen and tap the "+" button to enter edit mode. Search for "Nil" in the widget list and choose the size that suits you. The widget will show your current dhikr count and update in real time.</p>
+      </div>
+    </div>
+
+    <div class="faq-item fade-in">
+      <button class="faq-question" aria-expanded="false">
+        <span>How does the Apple Watch integration work?</span>
+        <div class="faq-icon"></div>
+      </button>
+      <div class="faq-answer">
+        <p>Once the Nil app is installed on your Apple Watch, it can track your dhikr sessions directly from your wrist. Counts sync automatically with the iPhone app via Apple's on-device App Group storage — no cloud, no account needed.</p>
+      </div>
+    </div>
+
+    <div class="faq-item fade-in">
+      <button class="faq-question" aria-expanded="false">
+        <span>Is my data private? Do you collect anything?</span>
+        <div class="faq-icon"></div>
+      </button>
+      <div class="faq-answer">
+        <p>We collect absolutely nothing. No account, no analytics, no tracking. Everything you do in Nil stays on your device. You can read the full details in our <a href="privacy.html">Privacy Policy</a>.</p>
+      </div>
+    </div>
+
+    <div class="faq-item fade-in">
+      <button class="faq-question" aria-expanded="false">
+        <span>I purchased the premium version but it's not unlocked. What do I do?</span>
+        <div class="faq-icon"></div>
+      </button>
+      <div class="faq-answer">
+        <p>Go to Settings inside the app and tap "Restore Purchases". This will re-apply your one-time purchase linked to your Apple ID at no extra charge. If the issue persists, <a href="mailto:feedback@nildhikr.com">contact us</a> and we'll sort it out.</p>
+      </div>
+    </div>
+
+    <div class="faq-item fade-in">
+      <button class="faq-question" aria-expanded="false">
+        <span>How do I delete my data?</span>
+        <div class="faq-icon"></div>
+      </button>
+      <div class="faq-answer">
+        <p>Since all data is stored locally on your device, you can delete it by removing the app. There are no accounts or servers to clear — once the app is deleted, all associated data is gone.</p>
+      </div>
+    </div>
+
+    <div class="faq-item fade-in">
+      <button class="faq-question" aria-expanded="false">
+        <span>I have a feature request or found a bug. How do I report it?</span>
+        <div class="faq-icon"></div>
+      </button>
+      <div class="faq-answer">
+        <p>We'd love to hear from you. Send your feedback or bug report to <a href="mailto:feedback@nildhikr.com">feedback@nildhikr.com</a> with as much detail as possible (iOS version, device, steps to reproduce). Every message is read personally.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="index.html" class="footer-logo">
+      <svg viewBox="100 150 300 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 141 345 L 141 265 A 35 35 0 0 1 211 265 L 211 345" stroke="#FFFFFF" stroke-width="44" fill="none" stroke-linecap="butt"/>
+        <path d="M 285 323 L 285 230" stroke="#FFFFFF" stroke-width="44" fill="none" stroke-linecap="round"/>
+        <circle cx="285" cy="171" r="22" fill="#FFFFFF"/>
+        <path d="M 359 323 L 359 171" stroke="#FFFFFF" stroke-width="44" fill="none" stroke-linecap="round"/>
+      </svg>
+    </a>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="mailto:feedback@nildhikr.com">Contact</a></li>
+    </ul>
+    <p class="footer-copy">بِسْمِ ٱللَّٰهِ</p>
+  </footer>
+
+  <script>
+    // ─── Fade-in on scroll ────────────────────────────
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 60);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ─── FAQ accordion ───────────────────────────────
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const answer = item.querySelector('.faq-answer');
+        const isOpen = item.classList.contains('open');
+
+        // close all
+        document.querySelectorAll('.faq-item.open').forEach(openItem => {
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-answer').style.maxHeight = '0';
+          openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+
+        // open clicked if it was closed
+        if (!isOpen) {
+          item.classList.add('open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
